@@ -2,7 +2,8 @@
 import yaml
 import urllib.request
 from typing import Dict, Any
-from .types import Operation, RestMethod
+from types_local import Operation, RestMethod
+
 
 def read_yaml(url: str) -> Dict[str, Operation]:
     """
@@ -21,16 +22,20 @@ def read_yaml(url: str) -> Dict[str, Operation]:
     text = request.read()
     return yaml.load(text)
 
-def operation_from_path_info(api_schema: Dict[str, Any], path: str, method: RestMethod) -> Operation:
+def operation_from_path_info(api_schema: Dict[str, Any], path: str, method_name: str) -> Operation:
     """
-    >>> api_schema = read_yaml(url)
+    >>> from read_swagger_file import *
+    >>> url = "https://raw.githubusercontent.com/swagger-api/swagger-samples/master/java/inflector-dropwizard-guice/src/main/swagger/swagger.yaml"
     >>> path = "/pet"
     >>> method = "post"
-    >>> operation = operation_from_path_info(api_schema, path, RestMethod(method))
+    >>> api_schema = read_yaml(url)
+    >>> operation = operation_from_path_info(api_schema, path, method)
     """
-    p = api_schema['paths'][path][f"{method}""]
+    p = api_schema['paths'][path][method_name]
+
+    method = RestMethod.from_value(method_name)
     out = Operation(
-        operations_id = p['OperationId'], 
+        operations_id = p['operationId'], 
         path = path,
         method = method, 
         consumes = p['consumes'],
@@ -39,6 +44,7 @@ def operation_from_path_info(api_schema: Dict[str, Any], path: str, method: Rest
         responses = p["responses"],
         security = p["security"]
     )
+    return out
 
 if __name__ == "__main__":
     import doctest

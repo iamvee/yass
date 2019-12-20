@@ -71,3 +71,13 @@ a sample path look like this:
       security:
       - petstore_auth:
 ```
+
+
+```python
+from read_swagger_file import *
+url = "https://raw.githubusercontent.com/swagger-api/swagger-samples/master/java/inflector-dropwizard-guice/src/main/swagger/swagger.yaml"
+path = "/pet"
+method = "post"
+api_schema = read_yaml(url)
+operation = operation_from_path_info(api_schema, path, method)
+```

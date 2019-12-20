@@ -12,7 +12,7 @@ class StrOptions(str, Enum):
 
     @classmethod
     def from_value(cls, value):
-        return cls._value2member_map_[value]
+        return cls._value2member_map_[value.upper()]
 
 class RestMethod(StrOptions):
     GET = auto()
