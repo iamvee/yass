@@ -1,0 +1,11 @@
+docutils==0.15.2
+PyYAML==5.2
+yass==0.0.1
+certifi==2019.11.28
+chardet==3.0.4
+docutils==0.15.2
+idna==2.8
+PyYAML==5.2
+requests==2.22.0
+urllib3==1.25.7
+yass==0.0.1

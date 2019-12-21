@@ -11,7 +11,7 @@ def read_yaml(url: str) -> Dict[str, Operation]:
     """
     request = urllib.request.urlopen(url)
     text = request.read()
-    return yaml.load(text)
+    return yaml.load(text ,  Loader=yaml.UnsafeLoader )
 
 def operation_from_path_info(api_schema: Dict[str, Any], path: str, method_name: str) -> Operation:
     """

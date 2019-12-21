@@ -7,7 +7,7 @@ setuptools.setup(
     name="yass",
     version="0.0.1",
     author="vee",
-    install_requires=['docutils>=0.3'],
+    install_requires=['docutils>=0.3', 'PyYAML>=5.2', 'requests>=2.22.0'],
     author_email="naeini.v@gmail.com",
     description="Yet Another Swagger Stuff",
     long_description=long_description,
