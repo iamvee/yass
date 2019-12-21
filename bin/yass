@@ -1,0 +1,5 @@
+#!/usr/bin/env python3.7
+import sys
+
+
+flags = sys.argv[1:]

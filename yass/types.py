@@ -1,12 +1,11 @@
 from enum import Enum, auto
 from typing import NamedTuple, Any, Dict
-import enum
 
 
 class StrOptions(str, Enum):
     def __str__(self):
         return self.value.lower()
-    
+
     def _generate_next_value_(name, *_):
         return name
 
@@ -23,7 +22,7 @@ class RestMethod(StrOptions):
     OPTIONS = auto()
     TRACE = auto()
     PATCH = auto()
-    
+
 
 class HttpResult(NamedTuple):
     Status: int
@@ -37,7 +36,7 @@ class Operation(NamedTuple):
     method: RestMethod
     consumes: Any
     produces: Any
-    parameters: Any  # it's a bit nested gonna use better type hints and so on 
+    parameters: Any  # it's a bit nested gonna use better type hints and so on
     responses: Any
     security: Any
 
